@@ -13,6 +13,7 @@
 ## 参考文献
 1. [Effects of Drinking Hot Water, Cold Water, and Chicken Soup on Nasal Mucus Velocity and Nasal Airflow Resistance](https://doi.org/10.1016/S0012-3692(15)37387-6)
 2. [The effects of a hot drink on nasal airflow and symptoms of common cold and flu](https://www.researchgate.net/profile/Ronald-Eccles/publication/23790050_The_effects_of_a_hot_drink_on_nasal_airflow_and_symptoms_of_common_cold_and_flu/links/0deec518fe3376cd31000000/The-effects-of-a-hot-drink-on-nasal-airflow-and-symptoms-of-common-cold-and-flu.pdf)
+
 <div align=center>
-  <img src=''>
+  <img src='images/water.jpg'>
 </div>
