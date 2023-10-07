@@ -19,7 +19,8 @@
 9. `Serial.print(data)`: 用于将数据打印到串口监视器。data 可以是数字，字符串或其他数据类型。
 10. `Serial.available()`: 用于检查是否有数据可以从串口读取。
 
-## 代码实现
+## LED点亮代码实现
+
 - 这段代码的是用来控制LED亮灭的，每隔一秒亮灭一次。
 
 ```cpp
@@ -40,9 +41,100 @@ void loop() {
 }
 
 ```
+## LED流水灯
+- 按照下图所示接线
+<div align=center>
+    <img src='images/流水灯.png' style="width:50%;">
+</div>
+
+- 正常的流水灯
+  
+```c
+// 定义 GPIO 引脚数组
+int pin_list[5] = {13, 12, 14, 27, 26};
+// 获取数组长度
+int size = sizeof(pin_list) / sizeof(pin_list[0]);
+
+void setup() {
+  // 设定 GPIO 引脚为输出模式
+  for (int i=0; i<size;i++) {
+    pinMode(pin_list[i], OUTPUT);
+    }
+}
+
+void loop() {
+  // 将所有引脚设置为高电平
+  for (int i=0;i<size;i++) {
+    digitalWrite(pin_list[i], HIGH);
+    delay(50);
+    }
+  // 将所有引脚设置为低电平
+  for (int i=0;i<size;i++) {
+    digitalWrite(pin_list[i], LOW);
+    delay(50);
+    }
+}
+```
+- 反复流水灯
+
+```c
+// 定义 GPIO 引脚数组
+int pin_list[5] = {13, 12, 14, 27, 26};
+// 获取数组长度
+int size = sizeof(pin_list) / sizeof(pin_list[0]);
+
+void setup() {
+  // 设定 GPIO 引脚为输出模式
+  for (int i=0; i<size;i++) {
+    pinMode(pin_list[i], OUTPUT);
+    }
+}
+
+void loop() {
+  // 将所有引脚设置为高电平
+  for (int i=0;i<size;i++) {
+    digitalWrite(pin_list[i], HIGH);
+    delay(50);
+    }
+  // 将所有引脚设置为低电平
+  for (int i=size-1;i>=0;i--) {
+    digitalWrite(pin_list[i], LOW);
+    delay(50);
+    }
+}
+```
+- LED 移动
+每次在点亮这颗 LED 的时候，同时把上一颗 LED 的状态改为低电平，并且当索引值为 0 时，让最后一颗 LED 状态改为低电平代码如下：
+```c
+// 定义 GPIO 引脚数组
+int pin_list[5] = {13, 12, 14, 27, 26};
+// 获取数组长度
+int size = sizeof(pin_list) / sizeof(pin_list[0]);
+
+void setup() {
+  // 设定 GPIO 引脚为输出模式
+  for (int i=0; i<size;i++) {
+    pinMode(pin_list[i], OUTPUT);
+    }
+}
+
+void loop() {
+  // 将所有引脚设置为高电平
+  for (int i=0;i<size;i++) {
+    digitalWrite(pin_list[i], HIGH);
+    if (i > 0){
+      digitalWrite(pin_list[i-1], LOW);
+      }else {
+      digitalWrite(pin_list[size-1], LOW);
+      }
+    delay(250);
+    
+    }
+}
+```
 ## 纪念一下~
+
 <div align=center>
     <p><em>亮了，亮了！</em> 😄</p>
     <img src='images/LED.jpg' style="width:70%;">
 </div>
-
